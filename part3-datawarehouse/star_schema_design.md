@@ -109,3 +109,24 @@
 ## Section 3: Sample Data Flow
 
 **Source Transaction in Operational System:**
+
+
+**ETL Process Steps:**
+
+1. **Customer Lookup:** 
+   - Query: `SELECT customer_key FROM dim_customer WHERE customer_id = 'C001'`
+   - Result: customer_key = 12
+
+2. **Product Lookup (with SCD Type 2):**
+   - Query: `SELECT product_key FROM dim_product WHERE product_id = 'P001' AND current_flag = TRUE`
+   - Result: product_key = 5
+
+3. **Date Lookup:**
+   - Query: `SELECT date_key FROM dim_date WHERE full_date = '2024-01-15'`
+   - Result: date_key = 20240115
+
+4. **Fact Table Insert:**
+```sql
+INSERT INTO fact_sales (date_key, product_key, customer_key, 
+                       quantity_sold, unit_price, total_amount)
+VALUES (20240115, 5, 12, 2, 45999.00, 91998.00);
