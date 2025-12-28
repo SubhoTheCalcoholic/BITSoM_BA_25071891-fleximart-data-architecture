@@ -130,7 +130,7 @@
 INSERT INTO fact_sales (date_key, product_key, customer_key, 
                        quantity_sold, unit_price, total_amount)
 VALUES (20240115, 5, 12, 2, 45999.00, 91998.00);
-
+```
 
 ##Resulting Star Schema Data:
 
