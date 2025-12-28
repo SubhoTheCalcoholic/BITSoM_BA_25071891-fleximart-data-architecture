@@ -41,3 +41,26 @@ studentID-fleximart-data-architecture/
 ├── warehouse_schema.sql # Data warehouse schema
 ├── warehouse_data.sql # Sample warehouse data
 └── analytics_queries.sql # OLAP analytical queries
+
+
+## Technologies Used
+
+- **Python 3.8+**: For ETL pipeline development
+- **Pandas**: Data manipulation and cleaning
+- **MySQL 8.0**: Relational database for operational data
+- **MongoDB 6.0**: NoSQL database for product catalog
+- **SQL**: For analytical queries and data warehouse operations
+- **Git**: Version control
+
+## Setup Instructions
+
+### Prerequisites
+1. Install Python 3.8 or higher
+2. Install MySQL 8.0 or higher
+3. Install MongoDB 6.0 or higher
+4. Install Git
+
+### Step 1: Clone the Repository
+```bash
+git clone https://github.com/[username]/[studentID]-fleximart-data-architecture.git
+cd [studentID]-fleximart-data-architecture
