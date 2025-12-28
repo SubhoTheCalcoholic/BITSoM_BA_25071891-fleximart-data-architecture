@@ -135,50 +135,50 @@ VALUES (20240115, 5, 12, 2, 45999.00, 91998.00);
 ## Resulting Star Schema Data:
 
 **fact_sales:**
-sale_key: 1001
-date_key: 20240115
-product_key: 5
-customer_key: 12
-quantity_sold: 2
-unit_price: 45999.00
-discount_amount: 0.00
-total_amount: 91998.00
+sale_key: 1001 |
+date_key: 20240115 |
+product_key: 5 |
+customer_key: 12 |
+quantity_sold: 2 |
+unit_price: 45999.00 |
+discount_amount: 0.00 |
+total_amount: 91998.00 |
 
 **dim_date:**
-date_key: 20240115
-full_date: '2024-01-15'
-day_of_week: 'Monday'
-day_of_month: 15
-month: 1
-month_name: 'January'
-quarter: 'Q1'
-year: 2024
-is_weekend: FALSE
+date_key: 20240115 |
+full_date: '2024-01-15' |
+day_of_week: 'Monday' |
+day_of_month: 15 |
+month: 1 |
+month_name: 'January' |
+quarter: 'Q1' |
+year: 2024 |
+is_weekend: FALSE |
 
 **dim_product:**
-product_key: 5
-product_id: 'P001'
-product_name: 'Samsung Galaxy S21'
-category: 'Electronics'
-subcategory: 'Smartphones'
-brand: 'Samsung'
-unit_price: 45999.00
-is_active: TRUE
-valid_from: '2023-12-01'
-valid_to: NULL
-current_flag: TRUE
+product_key: 5 |
+product_id: 'P001' |
+product_name: 'Samsung Galaxy S21' |
+category: 'Electronics' |
+subcategory: 'Smartphones' |
+brand: 'Samsung' |
+unit_price: 45999.00 |
+is_active: TRUE |
+valid_from: '2023-12-01' |
+valid_to: NULL |
+current_flag: TRUE |
 
 **dim_customer:**
-customer_key: 12
-customer_id: 'C001'
-customer_name: 'John Doe'
-city: 'Bangalore'
-state: 'Karnataka'
-customer_segment: 'High Value'
-registration_date: '2023-01-15'
-loyalty_tier: 'Gold'
-total_orders: 15
-total_spent: 245000.00
+customer_key: 12 |
+customer_id: 'C001' |
+customer_name: 'John Doe' |
+city: 'Bangalore' |
+state: 'Karnataka' |
+customer_segment: 'High Value' |
+registration_date: '2023-01-15' |
+loyalty_tier: 'Gold' |
+total_orders: 15 |
+total_spent: 245000.00 |
 
 ## Analytical Query Example:
 ```sql
