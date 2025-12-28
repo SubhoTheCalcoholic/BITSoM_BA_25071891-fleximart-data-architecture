@@ -86,3 +86,26 @@
 - `city`: Customer city (Varchar(50))
 - `state`: Customer state (Varchar(50))
 - `country`: Country (Varchar(50), Default: 'India')
+- `customer_segment`: High/Medium/Low value (Varchar(20))
+- `registration_date`: Date of registration (Date)
+- `loyalty_tier`: Bronze/Silver/Gold/Platinum (Varchar(20))
+- `total_orders`: Number of orders placed (Integer, Derived)
+- `total_spent`: Total amount spent (Decimal(10,2), Derived)
+
+---
+
+## Section 2: Design Decisions (150 words)
+
+**Granularity Choice:** I chose transaction line-item level granularity because it provides maximum analytical flexibility. This allows drill-down to individual product sales while supporting roll-up to orders, customers, time periods, and categories. Business questions like "which specific products sold well on weekends?" require this detailed level.
+
+**Surrogate Keys:** Surrogate keys were chosen over natural keys for several reasons: 1) Performance - integer joins are faster than string joins, 2) Stability - business keys can change (product codes may be reused), 3) Integration - different source systems may use different keys for same entities, 4) SCD support - essential for Type 2 dimensions.
+
+**Drill-down/Roll-up Support:** The star schema naturally supports OLAP operations. Drill-down: Year → Quarter → Month → Day, or Category → Subcategory → Product. Roll-up: Product → Category → All Products. Dimension hierarchies (date hierarchy: Year-Quarter-Month-Day) enable intuitive navigation. Pre-aggregated columns in dimensions (total_orders in dim_customer) support rapid summarization without fact table scans.
+
+**Denormalization:** Dimensions are deliberately denormalized to avoid joins during queries. All customer attributes are in one table, all product attributes in another. This trades storage efficiency for query performance - a classic data warehouse trade-off.
+
+---
+
+## Section 3: Sample Data Flow
+
+**Source Transaction in Operational System:**
