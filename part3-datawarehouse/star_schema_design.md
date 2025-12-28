@@ -132,9 +132,9 @@ INSERT INTO fact_sales (date_key, product_key, customer_key,
 VALUES (20240115, 5, 12, 2, 45999.00, 91998.00);
 ```
 
-##Resulting Star Schema Data:
+## Resulting Star Schema Data:
 
-fact_sales:
+**fact_sales:**
 sale_key: 1001
 date_key: 20240115
 product_key: 5
@@ -144,7 +144,7 @@ unit_price: 45999.00
 discount_amount: 0.00
 total_amount: 91998.00
 
-dim_date:
+**dim_date:**
 date_key: 20240115
 full_date: '2024-01-15'
 day_of_week: 'Monday'
@@ -155,7 +155,7 @@ quarter: 'Q1'
 year: 2024
 is_weekend: FALSE
 
-dim_product:
+**dim_product:**
 product_key: 5
 product_id: 'P001'
 product_name: 'Samsung Galaxy S21'
@@ -168,7 +168,7 @@ valid_from: '2023-12-01'
 valid_to: NULL
 current_flag: TRUE
 
-dim_customer:
+**dim_customer:**
 customer_key: 12
 customer_id: 'C001'
 customer_name: 'John Doe'
@@ -180,7 +180,7 @@ loyalty_tier: 'Gold'
 total_orders: 15
 total_spent: 245000.00
 
-Analytical Query Example:
+## Analytical Query Example:
 ```sql
 -- Monthly revenue by customer segment
 SELECT 
@@ -193,7 +193,7 @@ JOIN dim_customer c ON f.customer_key = c.customer_key
 WHERE d.year = 2024
 GROUP BY d.month_name, c.customer_segment
 ORDER BY d.month, c.customer_segment;
-
+```
 
 
 ---
