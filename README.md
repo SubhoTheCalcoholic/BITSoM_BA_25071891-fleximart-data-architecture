@@ -64,3 +64,137 @@ studentID-fleximart-data-architecture/
 ```bash
 git clone https://github.com/[username]/[studentID]-fleximart-data-architecture.git
 cd [studentID]-fleximart-data-architecture
+```
+
+### Step 2: Set Up Python Environment
+```bash
+# Install Python dependencies for Part 1
+cd part1-database-etl
+pip install -r requirements.txt
+cd ..
+```
+
+### Step 3: Database Setup
+**MySQL Setup (for Parts 1 & 3):** 
+```bash
+# Install Python dependencies for Part 1
+cd part1-database-etl
+pip install -r requirements.txt
+cd ..
+```
+
+**MongoDB Setup (for Part 2):** 
+```bash
+# Start MongoDB service (if not running)
+sudo systemctl start mongod
+```
+
+### Step 4: Run Part 1 - ETL Pipeline
+```bash
+cd part1-database-etl
+
+# Update database credentials in etl_pipeline.py if needed
+# Then run the ETL pipeline
+python etl_pipeline.py
+
+# Execute business queries
+mysql -u root -p fleximart < business_queries.sql
+```
+
+### Step 5: Run Part 2 - NoSQL Operations
+```bash
+cd part2-nosql
+
+# Import data into MongoDB
+mongoimport --db fleximart --collection products --file products_catalog.json --jsonArray
+
+# Run MongoDB operations
+mongosh < mongodb_operations.js
+```
+
+### Step 6: Run Part 3 - Data Warehouse
+```bash
+cd part3-datawarehouse
+
+# Create data warehouse schema
+mysql -u root -p fleximart_dw < warehouse_schema.sql
+
+# Load sample data
+mysql -u root -p fleximart_dw < warehouse_data.sql
+
+# Run analytical queries
+mysql -u root -p fleximart_dw < analytics_queries.sql
+```
+
+### Key Features
+**Part 1: ETL Pipeline**
+
+    Data Extraction: Reads CSV files with various data quality issues
+
+    Data Transformation:
+
+        Handles missing values and duplicates
+
+        Standardizes phone and date formats
+
+        Cleans and normalizes data
+
+    Data Loading: Inserts cleaned data into MySQL database
+
+    Data Quality Report: Generates detailed report of ETL process
+
+**Part 2: NoSQL Analysis**
+
+    Theory: Analysis of RDBMS limitations and NoSQL benefits
+
+    Practical: MongoDB operations including:
+
+        Data import from JSON
+
+        Basic and complex queries
+
+        Aggregation pipelines
+
+        Update operations
+
+**Part 3: Data Warehouse**
+
+    Star Schema Design: Complete dimensional modeling
+
+    SCD Implementation: Type 2 slowly changing dimensions for products
+
+    OLAP Queries: Advanced analytical queries including:
+
+        Drill-down analysis
+
+        Product performance ranking
+
+        Customer segmentation
+
+        RFM analysis
+
+### Key Learnings
+
+    Data Engineering Fundamentals: Building end-to-end data pipelines from raw data to insights
+
+    Database Design: Understanding normalization, denormalization, and schema design
+
+    ETL Best Practices: Handling data quality issues and ensuring data integrity
+
+    NoSQL Applications: When and how to use document databases effectively
+
+    Data Warehousing: Designing star schemas for analytical processing
+
+    Analytical SQL: Writing complex queries for business intelligence
+
+### Challenges Faced
+
+    Data Quality Issues: Handling inconsistent formats, missing values, and duplicates in raw data
+
+    Database Integration: Managing connections and transactions between Python and MySQL
+
+    SCD Implementation: Designing Type 2 slowly changing dimensions for historical tracking
+
+    Performance Optimization: Ensuring queries perform well with large datasets
+
+    Documentation: Creating clear, comprehensive documentation for all components
