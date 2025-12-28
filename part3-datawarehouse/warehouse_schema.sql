@@ -131,3 +131,4 @@ FROM fact_sales f
 JOIN dim_product p ON f.product_key = p.product_key
 WHERE p.current_flag = TRUE
 GROUP BY p.product_id, p.product_name, p.category, p.subcategory, p.brand, p.unit_price;
+```
