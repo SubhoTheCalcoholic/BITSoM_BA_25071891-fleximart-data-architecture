@@ -1,7 +1,3 @@
-
----
-
-### **File: `part3-datawarehouse/warehouse_schema.sql`**
 ```sql
 -- Data Warehouse Schema for FlexiMart Analytics
 -- Database: fleximart_dw
